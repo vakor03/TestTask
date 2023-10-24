@@ -5,7 +5,7 @@ namespace _Project.Scripts
     public class OrbitBuilder
     {
         private float Radius { get; set; } = 1;
-        private double Steps { get; set; } = 50;
+        private int Steps { get; set; } = 50;
         private float LineWidth { get; set; } = 0.35f;
         private Color Color { get; set; } = Color.white;
 
@@ -33,7 +33,7 @@ namespace _Project.Scripts
             return this;
         }
 
-        public OrbitBuilder WithStepsCount(double steps)
+        public OrbitBuilder WithStepsCount(int steps)
         {
             Steps = steps;
             return this;
@@ -41,9 +41,8 @@ namespace _Project.Scripts
 
         public GameObject Build()
         {
-            const int steps = 50;
             var orbit = Object.Instantiate(GameController.Instance.LineRendererPrefab);
-            DrawCircle(steps, Radius, orbit);
+            DrawCircle(Steps, Radius, orbit);
 
             orbit.startColor = Color;
             orbit.endColor = Color;
