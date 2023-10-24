@@ -423,6 +423,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92521716b5a84390bec7db6747456058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planetStatsSOs:
+  - {fileID: 11400000, guid: 89bfe81edf1889949a222e887b1505d0, type: 2}
+  - {fileID: 11400000, guid: 5d039e6cbf2e7114092bf2ae42f05538, type: 2}
+  - {fileID: 11400000, guid: ba321ce525ae7be40b466f6b7abbb78e, type: 2}
+  - {fileID: 11400000, guid: 47d3dde4adec69744a1627efefc0730a, type: 2}
+  - {fileID: 11400000, guid: fe2eed81173ea3545a2fafb489276434, type: 2}
+  - {fileID: 11400000, guid: 32a356f04c12c534f8a1ea296a256c86, type: 2}
+  - {fileID: 11400000, guid: 235615120988bca41bfe9f8bcebc7a93, type: 2}
 --- !u!4 &694501324
 Transform:
   m_ObjectHideFlags: 0

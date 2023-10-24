@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -8,6 +9,9 @@ namespace _Project.Scripts
     public class GameController : MonoBehaviour
     {
         public static GameController Instance { get; private set; }
+
+        [SerializeField] private List<PlanetStatsSO> planetStatsSOs;
+        
         
         private IPlaneterySystemFactory _planeterySystemFactory;
         
@@ -18,6 +22,8 @@ namespace _Project.Scripts
             Instance = this;
             
             _planeterySystemFactory = new PlaneterySystemFactory();
+            
+            PlanetStatsHelper.Set(planetStatsSOs);
         }
         public void GenerateNewSystem(double mass)
         {

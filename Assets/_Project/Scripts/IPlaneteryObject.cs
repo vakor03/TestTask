@@ -4,7 +4,5 @@
     {
         MassClassEnum MassClass { get; }
         double Mass { get; }
-        
-        double Radius { get; } // TODO: Remove this property
     }
 }
