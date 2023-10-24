@@ -431,6 +431,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe2eed81173ea3545a2fafb489276434, type: 2}
   - {fileID: 11400000, guid: 32a356f04c12c534f8a1ea296a256c86, type: 2}
   - {fileID: 11400000, guid: 235615120988bca41bfe9f8bcebc7a93, type: 2}
+  lineRendererPrefab: {fileID: 1424659234212825626, guid: 77ecd40728da4124a898ac3f5637ffb3, type: 3}
 --- !u!4 &694501324
 Transform:
   m_ObjectHideFlags: 0

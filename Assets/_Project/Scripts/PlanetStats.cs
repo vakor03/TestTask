@@ -11,5 +11,6 @@ namespace _Project.Scripts
         [field: SerializeField] public double MaxMass { get; set; }
         [field: SerializeField] public double MinRadius { get; set; }
         [field: SerializeField] public double MaxRadius { get; set; }
+        [field: SerializeField] public Color OrbitColor { get; set; }
     }
 }

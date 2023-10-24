@@ -18,3 +18,4 @@ MonoBehaviour:
   <MaxMass>k__BackingField: 5000
   <MinRadius>k__BackingField: 3.5
   <MaxRadius>k__BackingField: 27
+  <OrbitColor>k__BackingField: {r: 0.42675996, g: 0.18111429, b: 0.6981132, a: 1}

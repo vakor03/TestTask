@@ -19,7 +19,7 @@ namespace _Project.Scripts
 
         private double GenerateRandomMass()
         {
-            return 10;
+            return 50;
         }
     }
 }

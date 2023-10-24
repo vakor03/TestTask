@@ -11,7 +11,8 @@ namespace _Project.Scripts
         public static GameController Instance { get; private set; }
 
         [SerializeField] private List<PlanetStatsSO> planetStatsSOs;
-        
+        [SerializeField] private LineRenderer lineRendererPrefab;
+        public LineRenderer LineRendererPrefab => lineRendererPrefab;
         
         private IPlaneterySystemFactory _planeterySystemFactory;
         

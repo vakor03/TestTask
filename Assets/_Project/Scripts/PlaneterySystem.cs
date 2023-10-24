@@ -5,9 +5,9 @@ namespace _Project.Scripts
 {
     public class PlaneterySystem : IPlaneterySystem
     {
-        private readonly List<IPlaneteryObject> _planeteryObjects;
-
+        private List<IPlaneteryObject> _planeteryObjects;
         private List<PlanetVisuals> _planetsVisuals = new();
+        private OrbitBuilder _orbitBuilder = new();
 
         public PlaneterySystem(List<IPlaneteryObject> planeteryObjects)
         {
@@ -30,10 +30,10 @@ namespace _Project.Scripts
             double previousRadius = 0;
             for (var i = 0; i < _planeteryObjects.Count; i++)
             {
-                double orbitRadius = previousRadius + Random.Range(1f, 6f);
+                double orbitRadius = previousRadius + Random.Range(3f, 10f);
 
                 CreatePlanet(_planeteryObjects[i], orbitRadius);
-                CreateOrbit((float)orbitRadius, i);
+                CreateOrbit(_planeteryObjects[i], orbitRadius);
                 
                 previousRadius = orbitRadius;
             }
@@ -48,27 +48,10 @@ namespace _Project.Scripts
             _planetsVisuals.Add(planet);
         }
 
-        private void CreateOrbit(float orbitRadius, int i)
+        private void CreateOrbit(IPlaneteryObject planeteryObject, double orbitRadius)
         {
-            const int steps = 50;
-            var orbit = new GameObject($"Orbit_{i}").AddComponent<LineRenderer>();
-            DrawCircle(steps, orbitRadius, orbit);
-        }
-
-        private void DrawCircle(int steps, float radius, LineRenderer lineRenderer)
-        {
-            lineRenderer.positionCount = steps + 1;
-
-            var angle = 20f;
-            for (int i = 0; (i < steps + 1); i++)
-            {
-                var x = Mathf.Sin(Mathf.Deg2Rad * angle) * radius;
-                var y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
-
-                lineRenderer.SetPosition(i, new Vector3(x, 0, y));
-
-                angle += (360f / steps);
-            }
+            Color orbitColor = PlanetStatsHelper.GetColor(planeteryObject.MassClass);
+            _orbitBuilder.WithRadius(orbitRadius).WithColor(orbitColor).Build();
         }
     }
 }
