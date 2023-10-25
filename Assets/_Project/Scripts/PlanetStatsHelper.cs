@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Project.Scripts.Enums;
+using _Project.Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace _Project.Scripts
 {
     public static class PlanetStatsHelper
     {
-        public static void Set(List<PlanetStatsSO> planetStatsSos)
+        public static void Initialize(List<PlanetStatsSO> planetStatsSos)
         {
             _planetStatsMap = new Dictionary<MassClassEnum, PlanetStatsSO>();
             foreach (var planetStatsSo in planetStatsSos)

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using _Project.Scripts.Enums;
+using UnityEngine;
 
-namespace _Project.Scripts
+namespace _Project.Scripts.ScriptableObjects
 {
     [CreateAssetMenu(menuName = "Create PlanetStatsSO", fileName = "PlanetStatsSO", order = 0)]
     public class PlanetStatsSO : ScriptableObject

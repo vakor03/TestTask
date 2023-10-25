@@ -41,7 +41,8 @@ namespace _Project.Scripts
 
         public GameObject Build()
         {
-            var orbit = Object.Instantiate(GameController.Instance.LineRendererPrefab);
+            LineRenderer orbit = Object.Instantiate(GameController.Instance.LineRendererPrefab);
+            orbit.gameObject.name = "Orbit";
             DrawCircle(Steps, Radius, orbit);
 
             orbit.startColor = Color;

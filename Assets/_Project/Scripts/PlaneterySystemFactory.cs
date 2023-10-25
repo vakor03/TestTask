@@ -1,42 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using _Project.Scripts.Interfaces;
 using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
     public class PlaneterySystemFactory : IPlaneterySystemFactory
     {
+        private readonly List<double> _planetMasses = new();
+
         public IPlaneterySystem Create(double mass)
         {
-            var planetMasses = GenerateRandomPlanetMasses(mass, Random.Range(1, 10));
-            
+            GenerateRandomPlanetMasses(mass, Random.Range(1, 10));
+
             var planeterySystem =
-                new PlaneterySystem(planetMasses.Select(m => (IPlaneteryObject)PlanetaryObject.New(m)).ToList());
+                new PlaneterySystem(
+                    _planetMasses
+                        .Select(m => (IPlaneteryObject)new PlanetaryObject(m))
+                        .ToList());
 
             planeterySystem.Initialize();
 
             return planeterySystem;
         }
 
-        private List<double> GenerateRandomPlanetMasses(double totalMass, int planetsCount)
+        private void GenerateRandomPlanetMasses(double totalMass, int minPlanetsCount)
         {
-            List<double> planetMasses = new(planetsCount);
+            const float maxPossiblePlanetMass = 5000 - float.Epsilon;
+
+            _planetMasses.Clear();
 
             double massLeft = totalMass;
-            for (int i = 0; i < planetsCount - 1; i++)
+            for (int i = 0; i < minPlanetsCount - 1; i++)
             {
                 double planetMass = RandomMass(massLeft);
-                planetMasses.Add(planetMass);
+                _planetMasses.Add(planetMass);
                 massLeft -= planetMass;
             }
 
-            planetMasses.Add(massLeft);
+            while (massLeft >= maxPossiblePlanetMass)
+            {
+                double planetMass = RandomMass(massLeft);
+                _planetMasses.Add(planetMass);
+                massLeft -= planetMass;
+            }
 
-            return planetMasses;
-
+            _planetMasses.Add(massLeft);
+            
             double RandomMass(double d)
             {
-                return Random.Range(0, (float)d);
+                return Random.Range(0, Math.Min((float)d, maxPossiblePlanetMass));
             }
         }
     }

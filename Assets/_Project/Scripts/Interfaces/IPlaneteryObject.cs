@@ -1,4 +1,6 @@
-﻿namespace _Project.Scripts
+﻿using _Project.Scripts.Enums;
+
+namespace _Project.Scripts.Interfaces
 {
     public interface IPlaneteryObject
     {
